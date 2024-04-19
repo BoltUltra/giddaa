@@ -1,6 +1,6 @@
 import React from 'react'
-import Sidebar from './Sidebar'
-import Transactions from './Transactions'
+import { Sidebar } from './'
+
 
 const Dashboard = () => {
   return (

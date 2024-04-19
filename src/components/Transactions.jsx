@@ -1,10 +1,6 @@
 import React, { Fragment } from 'react';
 import { Tab } from '@headlessui/react'
-import Sidebar from './Sidebar';
-import SummaryTransaction from './SummaryTransaction';
-import SuccessfulTransactions from './SuccessfulTransactions';
-import ExpectedTransactions from './ExpectedTransactions';
-import DefaultTransactions from './DefaultTransactions';
+import { SummaryTransactions, SuccessfulTransactions, ExpectedTransactions, DefaultTransactions, Sidebar } from '.';
 
 
 
@@ -96,7 +92,7 @@ const Transactions = () => {
             </Tab.List>
             <Tab.Panels className='mt-6'>
               <Tab.Panel>
-                <SummaryTransaction />
+                <SummaryTransactions />
               </Tab.Panel>
               <Tab.Panel>
                 <SuccessfulTransactions />
