@@ -1,0 +1,164 @@
+import React, { useEffect, useState } from 'react';
+
+
+const formatDate = (dateStr) => {
+  const date = new Date(dateStr);
+  const day = date.getDate();
+  const month = date.toLocaleString('en-US', { month: 'long' });
+  const year = date.getFullYear();
+  let daySuffix;
+
+
+  if (day === 1 || day === 21 || day === 31) {
+    daySuffix = 'st';
+  } else if (day === 2 || day === 22) {
+    daySuffix = 'nd';
+  } else if (day === 3 || day === 23) {
+    daySuffix = 'rd';
+  } else {
+    daySuffix = 'th';
+  }
+
+  return `${day}${daySuffix} ${month} ${year}`;
+};
+const ExpectedTransactions = () => {
+  const [openDropdownId, setOpenDropdownId] = useState(null);
+  const [expectedData, setExpectedData] = useState(null);
+
+
+  const toggleDropdown = (transactionId) => {
+    setOpenDropdownId(openDropdownId === transactionId ? null : transactionId);
+  };
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      const token = localStorage.getItem('token');
+
+      try {
+        const expectedResponse = await fetch(`${process.env.BASE_URL}/developer/transaction/get-expected-payments`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        const expectedData = await expectedResponse.json();
+        setExpectedData(expectedData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchTransactions();
+  }, []);
+
+  const calculateDaysLeft = (dueDate) => {
+    const dueDateTime = new Date(dueDate).getTime();
+    const currentDateTime = new Date().getTime();
+    const differenceMs = dueDateTime - currentDateTime;
+    return Math.ceil(differenceMs / (1000 * 60 * 60 * 24));
+  };
+  return (
+    <>
+      <div className='space-y-6 mb-6'>
+        <div className="grid md:grid-cols-4">
+          <div className='transactions-card'>
+            {expectedData ? (
+              <div className='text-center space-y-3'>
+                <p className='text-2xl font-extrabold'>{expectedData.value.totalRecords}</p>
+                <p className='text-xs'>Expected Transactions</p>
+                <i className="fa-regular fa-circle-info absolute top-0 right-5 cursor-pointer"></i>
+              </div>
+            ) : (
+              <p className='text-xs'>Loading data...</p>
+            )}
+          </div>
+        </div>
+        <div className='md:px-0 px-5 md:max-w-full max-w-[350px] md:overflow-hidden overflow-x-scroll'>
+          <div className="mt-8 flow-root">
+            <p className='pb-2 md:max-w-xl'>Expected transactions involve payments awaiting the payment due date, anticipated to be fulfilled by customers, and primarily representing future repayments.</p>
+            <div className="-mx-4  overflow-x-auto lg:-mx-8">
+              <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+                  <table className="min-w-full divide-y divide-gray-300">
+                    <thead className="bg-[#f0f0f0]">
+                      <tr>
+                        <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-bold text-gray-900 sm:pl-6">
+                          ID
+                        </th>
+                        <th scope="col" className="table-heading">
+                          CUSTOMER
+                        </th>
+                        <th scope="col" className="whitespace-nowrap table-heading">
+                          TOTAL DUE
+                        </th>
+                        <th scope="col" className="whitespace-nowrap table-heading">
+                          TOTAL PAID
+                        </th>
+                        <th scope="col" className="table-heading">
+                          BALANCE
+                        </th>
+                        <th scope="col" className="table-heading">
+                          PROPERTY
+                        </th>
+                        <th scope="col" className="table-heading">
+                          NEXT PAYMENT
+                        </th>
+                        <th scope="col" className="table-heading">
+                          PAYMENT TRACKER
+                        </th>
+                        <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                          <span className="">ACTIONS</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 bg-white">
+                      {expectedData && expectedData.value.data ? (
+                        expectedData.value.data.map((transaction, index) => (
+                          <tr key={index} className=''>
+                            <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                              {index}
+                            </td>
+                            <td className="table-data">{`${transaction.customer.firstName} ${transaction.customer.lastName}`}</td>
+                            <td className="whitespace-nowrap table-data">
+                              &#8358;{Math.trunc(parseFloat(transaction.amount)).toLocaleString()}
+                            </td>
+                            <td className="whitespace-nowrap table-data">
+                              &#8358;{Math.trunc(parseFloat(transaction.organizationAmount)).toLocaleString()}
+                            </td>
+                            <td className="whitespace-nowrap table-data">
+                              &#8358;{Math.trunc(parseFloat(transaction.giddaaAmount)).toLocaleString()}
+                            </td>
+                            <td className="table-data">{`${transaction.house.cityName}, ${transaction.house.stateName}`}</td>
+                            <td className="whitespace-nowrap table-data">{formatDate(transaction.dueDate)}</td>
+                            <td className="whitespace-nowrap table-data">{calculateDaysLeft(transaction.dueDate)} days left</td>
+                            <td className="relative py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                              <i className="fa-light fa-ellipsis-vertical cursor-pointer" onClick={() => toggleDropdown(index)}></i>
+                              {openDropdownId === index && (
+                                <div className="absolute shadow rounded-md right-5 bg-white py-2 uppercase border z-10">
+                                  <div className='flex justify-center items-center w-52 text-center text-xs space-x-2'>
+                                    <i className="fa-thin fa-sack"></i>
+                                    <a href="#" className="block py-1">View Repayment Schedule</a>
+                                  </div>
+                                </div>
+                              )}
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan="10" className="px-6 py-4 whitespace-nowrap text-sm ">
+                            No data available.
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+export default ExpectedTransactions

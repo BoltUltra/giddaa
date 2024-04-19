@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'milik';
+  src: url('/fonts/Millik.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.milik {
+  font-family: 'milik';
+}
+
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 20px 4px 10px #e3eae3;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #335F32;
+  border-radius: 10px;
+  height: 2px;
+  /* Set the height of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}
+
+.loader {
+  width: 24px;
+  height: 24px;
+  border: 5px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.input {
+  @apply block w-full rounded-md py-1.5 px-3 shadow-sm border outline-1 outline-primary placeholder:text-gray-400 sm:text-sm sm:leading-6
+}
+
+.label {
+  @apply block text-sm font-medium leading-6 text-gray-900
+}
+
+.submit-btn {
+  @apply flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary
+}
+
+.active-link {
+  @apply text-primary border-r-4
+}
+
+.dashboard-route {
+  @apply hover:text-primary hover:font-semibold cursor-pointer transition-all duration-200 ease-in-out hover:border-r-4 rounded-r-sm border-r-primary
+}
+
+.active-tab {
+  @apply text-primary font-bold border-b border-b-primary outline-none
+}
+
+.transactions-card {
+  @apply py-10 px-6 shadow-lg rounded-lg border relative hover:border-primary transition-all duration-300 ease-in-out
+}
+
+.table-heading {
+  @apply px-3 py-3.5 text-left font-bold text-gray-900
+}
+
+.table-data {
+  @apply px-3 py-4
+}
