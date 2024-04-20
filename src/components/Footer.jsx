@@ -5,14 +5,14 @@ const Footer = () => {
   return (
     <footer className='border-t-8 font-red-hat'>
       <div className='bg-primary text-white md:px-20 px-5 py-10'>
-        <div className="md:max-w-sm max-w-xs bg-white mx-auto text-primary milik px-5 py-3 rounded-full flex flex-col items-center space-y-3">
+        <Link to='https://wa.me/08139145416' className="md:max-w-sm max-w-xs bg-white mx-auto text-primary milik px-5 py-3 rounded-full flex flex-col items-center space-y-3">
           <img src="/webp/whatsapp.webp" alt="" className='md:w-32 w-20' />
           <div className="flex items-center space-x-3">
             <img src="/svg/whatsapp.svg" alt="" className='md:w-10 w-8' />
             <span className='md:text-base text-sm'>Chat with us on WhatsApp</span>
             <i class="fa-light fa-arrow-right"></i>
           </div>
-        </div>
+        </Link>
         <div className='grid md:grid-cols-5 grid-cols-2 md:gap-0 gap-10 md:mt-20 mt-10'>
           <div className=' space-y-3'>
             <h5 className='milik md:text-lg'>Developers</h5>
@@ -37,7 +37,7 @@ const Footer = () => {
             <h5 className='milik md:text-lg'>Contact Us</h5>
             <div className='flex flex-col space-y-2 md:text-base text-sm'>
               <Link to='/'>info@giddaa.com</Link>
-              <Link to='https://wa.me/+2348097621791'>WhatsApp</Link>
+              <Link to='https://wa.me/08139145416'>WhatsApp</Link>
               <p className='font-bold'>Book a Meeting</p>
               <Link to='tel:+2348097621791' className='font-bold'>+234 809 762 1791</Link>
             </div>

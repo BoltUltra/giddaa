@@ -51,9 +51,9 @@ const PurchaseOptions = () => {
           </div>
 
           <div className='pt-36'>
-            <button className="flex items-center space-x-3 w-[90%] mx-auto border-2 border-primary bg-white rounded-full p-3">
+            <button className="flex items-center space-x-3 w-[95%] mx-auto border-2 border-primary bg-white rounded-full p-3">
               <img src="/svg/play.svg" alt="" />
-              <p className='md:text-sm text-xs'>WATCH THE VIDEO TO LEARN MORE</p>
+              <p className='text-xs'>WATCH THE VIDEO TO LEARN MORE</p>
             </button>
           </div>
         </div>
@@ -98,9 +98,9 @@ const PurchaseOptions = () => {
           </div>
 
           <div className='pt-5'>
-            <button className="flex items-center space-x-3 w-[90%] mx-auto border-2 border-primary bg-white rounded-full p-3">
+            <button className="flex items-center space-x-3 w-[95%] mx-auto border-2 border-primary bg-white rounded-full p-3">
               <img src="/svg/play.svg" alt="" />
-              <p className='md:text-sm text-xs'>WATCH THE VIDEO TO LEARN MORE</p>
+              <p className='text-xs'>WATCH THE VIDEO TO LEARN MORE</p>
             </button>
           </div>
         </div>
@@ -145,9 +145,9 @@ const PurchaseOptions = () => {
           </div>
 
           <div className='pt-20'>
-            <button className="flex items-center space-x-3 w-[90%] mx-auto border-2 border-primary bg-white rounded-full p-3">
+            <button className="flex items-center space-x-3 w-[95%] mx-auto border-2 border-primary bg-white rounded-full p-3">
               <img src="/svg/play.svg" alt="" />
-              <p className='md:text-sm text-xs'>WATCH THE VIDEO TO LEARN MORE</p>
+              <p className='text-xs'>WATCH THE VIDEO TO LEARN MORE</p>
             </button>
           </div>
         </div>

@@ -13,6 +13,10 @@ const WhoWeServe = () => {
   }, []);
   return (
     <section className='font-red-hat space-y-10'>
+      <div className='flex flex-col max-w-md text-center md:-ml-5 -ml-32 mt-10'>
+        <h3 className='milik text-primary font-bold text-xl md:text-4xl'>Who We Serve</h3>
+        <img src="/svg/line.svg" alt="" className='md:w-1/4 w-1/4 mx-auto' />
+      </div>
       <div className='grid md:grid-cols-2 md:h-screen items-center md:gap-10 gap-5 md:px-20 px-5 md:py-0 py-10' data-aos="zoom-in" data-aos-duration="2000">
         <div className="space-y-4">
           <img src="/svg/diaspora.svg" alt="" />
