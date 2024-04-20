@@ -13,7 +13,7 @@ const WhoWeServe = () => {
   }, []);
   return (
     <section className='font-red-hat space-y-10'>
-      <div className='flex flex-col max-w-md text-center md:-ml-5 -ml-32 mt-10'>
+      <div className='flex flex-col max-w-md text-center md:-ml-5 -ml-32 mt-20'>
         <h3 className='milik text-primary font-bold text-xl md:text-4xl'>Who We Serve</h3>
         <img src="/svg/line.svg" alt="" className='md:w-1/4 w-1/4 mx-auto' />
       </div>
