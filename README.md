@@ -32,6 +32,26 @@ Open in browser
   http://localhost:5173/
 ```
 
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`BASE_URL`
+
 ## Demo
 
 https://giddaa.vercel.app/
+
+## To Login
+
+Email
+
+```bash
+  info@theview.com
+```
+
+Password
+
+```bash
+  Spiderman12*
+```
