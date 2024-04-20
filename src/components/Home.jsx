@@ -1,8 +1,23 @@
 import React from 'react'
+import { CTA, Footer, Hero, HowItWorks, Navbar, Portfolio, PurchaseOptions, Testimonials, TrustedBy, WhoWeServe, WhyGiddaa } from './'
 
 const Home = () => {
   return (
-    <div>Heyyyyyy Welcome home</div>
+    <>
+      <main className='overflow-x-hidden'>
+        <Navbar />
+        <Hero />
+        <Portfolio />
+        <TrustedBy />
+        <Testimonials />
+        <PurchaseOptions />
+        <WhyGiddaa />
+        <WhoWeServe />
+        <HowItWorks />
+        <CTA />
+        <Footer />
+      </main>
+    </>
   )
 }
 
